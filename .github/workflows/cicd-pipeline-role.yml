@@ -8,7 +8,7 @@ on:
 
 defaults:
   run: 
-    working-directory: cicd-pipeline
+    working-directory: cicd-pipeline-role
 
 jobs:
   validation:

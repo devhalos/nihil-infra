@@ -1,0 +1,36 @@
+{
+  "name": "nihil-remote-backend-state-infra",
+  "version": "0.0.0",
+  "description": "Nihil Project Components Infra State",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install",
+    "commitlint": "commitlint",
+    "release": "standard-version",
+    "release:patch": "standard-version --release-as patch",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devhalos/nihil-remote-backend-state-infra.git"
+  },
+  "keywords": [
+    "devhalos",
+    "nihil",
+    "terraform"
+  ],
+  "author": "Jayson Ojeda",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devhalos/nihil-remote-backend-state-infra/issues"
+  },
+  "homepage": "https://github.com/devhalos/nihil-remote-backend-state-infra#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.2",
+    "@commitlint/config-conventional": "^17.0.2",
+    "husky": "^8.0.1",
+    "standard-version": "^9.5.0"
+  }
+}

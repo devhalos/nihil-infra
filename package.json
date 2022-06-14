@@ -1,13 +1,12 @@
 {
-  "name": "nihil-remote-backend-state-infra",
+  "name": "@devhalos/nihil-infra",
   "version": "0.1.0",
-  "description": "Nihil Project Components Infra State",
+  "description": "Nihil Common Infrastructure",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install",
     "commitlint": "commitlint",
-    "release": "standard-version",
     "release:patch": "standard-version --release-as patch",
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major"

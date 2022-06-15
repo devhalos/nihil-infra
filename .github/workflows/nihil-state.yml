@@ -46,7 +46,7 @@ jobs:
 
       - name: 'tf: plan'
         id: plan
-        run: terraform plan -out nihil-state.tfplan
+        run: terraform plan -out local.tfplan
 
       - uses: actions/upload-artifact@v2
         with:
@@ -57,7 +57,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: terraform-plan-artifact
-          path: nihil-state.tfplan
+          path: local.tfplan
 
   deploy:
     name: 'deploy'
@@ -91,7 +91,7 @@ jobs:
 
       - name: 'tf: apply'
         id: apply
-        run: terraform apply nihil-state.tfplan
+        run: terraform apply local.tfplan
 
 
 

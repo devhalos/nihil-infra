@@ -48,6 +48,10 @@ jobs:
         id: plan
         run: terraform plan -out local.tfplan
 
+      - name: 'view files'
+        id: view-files
+        run: ls -al
+
       - uses: actions/upload-artifact@v2
         with:
           name: terraform-artifact

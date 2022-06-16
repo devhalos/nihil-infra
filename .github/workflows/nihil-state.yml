@@ -58,7 +58,7 @@ jobs:
           name: terraform-artifact
           path: nihil-state/.terraform
 
-      - name: 'upload artifact: terraform plan file'
+      - name: 'upload artifact: terraform plan output'
         uses: actions/upload-artifact@v2
         with:
           name: terraform-plan-artifact
@@ -86,13 +86,17 @@ jobs:
       - name: 'tf: setup'
         uses: hashicorp/setup-terraform@v1
 
-      - uses: actions/download-artifact@v2
+      - name: 'download artifact: terraform resources'
+        uses: actions/download-artifact@v2
         with:
           name: terraform-artifact
+          path: nihil-state
 
-      - uses: actions/download-artifact@v2
+      - name: 'download artifact: terraform plan output'
+        uses: actions/download-artifact@v2
         with:
           name: terraform-plan-artifact
+          path: nihil-state
 
       - name: 'view files'
         id: view-files

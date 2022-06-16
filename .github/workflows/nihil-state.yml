@@ -90,7 +90,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: terraform-artifact
-          path: nihil-state
+          path: nihil-state/.terraform
 
       - name: 'download artifact: terraform plan output'
         uses: actions/download-artifact@v2

@@ -52,13 +52,14 @@ jobs:
         id: view-files
         run: ls -al
 
-      - uses: actions/upload-artifact@v2
+      - name: 'upload artifact: terraform resources'
+        uses: actions/upload-artifact@v2
         with:
           name: terraform-artifact
           path: nihil-state/.terraform
 
-      
-      - uses: actions/upload-artifact@v2
+      - name: 'upload artifact: terraform plan file'
+        uses: actions/upload-artifact@v2
         with:
           name: terraform-plan-artifact
           path: nihil-state/local.tfplan
@@ -93,9 +94,13 @@ jobs:
         with:
           name: terraform-plan-artifact
 
-      - name: 'tf: apply'
-        id: apply
-        run: terraform apply local.tfplan
+      - name: 'view files'
+        id: view-files
+        run: ls -al
+
+      # - name: 'tf: apply'
+      #   id: apply
+      #   run: terraform apply local.tfplan
 
 
 

@@ -55,13 +55,13 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: terraform-artifact
-          path: .terraform
+          path: ./.terraform
 
       
       - uses: actions/upload-artifact@v2
         with:
           name: terraform-plan-artifact
-          path: local.tfplan
+          path: ./local.tfplan
 
   deploy:
     name: 'deploy'

@@ -55,13 +55,13 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: terraform-artifact
-          path: ./.terraform
+          path: nihil-state/.terraform
 
       
       - uses: actions/upload-artifact@v2
         with:
           name: terraform-plan-artifact
-          path: ./local.tfplan
+          path: nihil-state/local.tfplan
 
   deploy:
     name: 'deploy'

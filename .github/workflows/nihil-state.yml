@@ -87,7 +87,7 @@ jobs:
 
       - name: 'tf: init'
         id: init
-        run: terraform init+      
+        run: terraform init     
 
       # - name: 'download artifact: terraform resources'
       #   uses: actions/download-artifact@v2

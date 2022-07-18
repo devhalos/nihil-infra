@@ -6,7 +6,6 @@ on:
         - '.github/**'
         - 'nihil-state/**'
 
-
 defaults:
   run: 
     working-directory: nihil-state
@@ -102,9 +101,9 @@ jobs:
         id: view-files
         run: ls -al
 
-      # - name: 'tf: apply'
-      #   id: apply
-      #   run: terraform apply local.tfplan
+      - name: 'tf: apply'
+        id: apply
+        run: terraform apply local.tfplan
 
 
 

@@ -11,6 +11,6 @@ The terraform deployment is done manually e.g via terraform cli
 
 ```sh
 terraform init
-terraform plan
-terraform apply -auto-approve
+terraform plan -out local.tfplan
+terraform apply local.tfplan
 ```

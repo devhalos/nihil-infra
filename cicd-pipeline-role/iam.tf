@@ -46,7 +46,8 @@ data "aws_iam_policy_document" "cicd_pipeline_permissions" {
       "s3:GetAccelerateConfiguration",
       "s3:GetEncryptionConfiguration",
       "s3:GetLifecycleConfiguration",
-      "s3:GetReplicationConfiguration"
+      "s3:GetReplicationConfiguration",
+      "s3:PutEncryptionConfiguration"
     ]
     resources = [
       "arn:aws:s3:::*"

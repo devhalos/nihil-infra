@@ -65,6 +65,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
+    if: github.ref == 'refs/heads/main' || contains(github.ref, 'refs/tags/')
 
     steps:
       - name: 'checkout'

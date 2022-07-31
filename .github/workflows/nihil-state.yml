@@ -56,8 +56,21 @@ jobs:
         with:
           name: terraform-plan-artifact
           path: nihil-state/local.tfplan
+  
+  release-please:
+    name: 'create-release'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          release-type: node
+          package-name: release-please-action
 
   deploy:
+    if: contains(github.ref, 'refs/tags/')
     name: 'deploy'
     needs: build
     runs-on: ubuntu-latest
@@ -65,7 +78,6 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    if: github.ref == 'refs/heads/main' || contains(github.ref, 'refs/tags/')
 
     steps:
       - name: 'checkout'

@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      contents: read
+      contents: write
     steps:
       - uses: google-github-actions/release-please-action@v3
         with:

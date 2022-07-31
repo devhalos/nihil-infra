@@ -60,9 +60,6 @@ jobs:
   release-please:
     name: 'create-release'
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: write
     steps:
       - uses: google-github-actions/release-please-action@v3
         with:

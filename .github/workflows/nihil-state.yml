@@ -67,7 +67,7 @@ jobs:
       - uses: google-github-actions/release-please-action@v3.1.2
         with:
           release-type: node
-          package-name: release-please-actions
+          package-name: release-please-action
           token: ${{ secrets.CICD_PIPELINE_GITHUB_TOKEN }}
 
   deploy:

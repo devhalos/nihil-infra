@@ -60,14 +60,15 @@ jobs:
   release-please:
     name: 'create-release'
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
+    permissions: "write-all"
     steps:
-      - uses: google-github-actions/release-please-action@v3
+      - name: 'checkout'
+        uses: actions/checkout@v2
+      - uses: google-github-actions/release-please-action@v3.1.2
         with:
           release-type: node
-          package-name: release-please-action
+          package-name: release-please-actions
+          token: ${{ secrets.CICD_PIPELINE_GITHUB_TOKEN }}
 
   deploy:
     if: contains(github.ref, 'refs/tags/')

@@ -68,6 +68,7 @@ jobs:
         with:
           release-type: node
           package-name: release-please-action
+          token: ${{ secrets.CICD_PIPELINE_GITHUB_TOKEN }}
 
   deploy:
     if: contains(github.ref, 'refs/tags/')

@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.0](https://github.com/devhalos/nihil-infra/compare/v0.4.0...v0.5.0) (2022-08-06)
+
+
+### Features
+
+* testing again 2 ([922c324](https://github.com/devhalos/nihil-infra/commit/922c32438650e56f6efd1460a36feb8af6030068))
+* testing again 3 ([3ee60b1](https://github.com/devhalos/nihil-infra/commit/3ee60b127d696e6e69b5043b887a1ce45c80246d))
+
 ## [0.4.0](https://github.com/devhalos/nihil-infra/compare/v0.3.0...v0.4.0) (2022-08-06)
 
 

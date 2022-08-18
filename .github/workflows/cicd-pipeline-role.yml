@@ -3,8 +3,10 @@ name: 'cicd-pipeline-role'
 on:
   push:
     paths:
-      - '**'
-      - '!nihil-state/**'
+      - '*'
+      - '.husky/**'
+      - 'cicd-pipeline-role/**'
+
 
 defaults:
   run: 

@@ -3,8 +3,9 @@ name: 'nihil-state'
 on:
   push:
     paths:
-      - '**'
-      - '!cicd-pipeline-role/**'
+      - '*'
+      - '.husky/**'
+      - 'nihil-state/**'
 
 defaults:
   run: 

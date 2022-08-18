@@ -3,11 +3,7 @@ name: 'nihil-state'
 on:
   push:
     paths:
-      - '!./**/**'
-      - ' ./*'
-      - '.husky'
-      - '.github/**'
-      - 'nihil-state/**'
+      - '!cicd-pipeline-role/**'
 
 defaults:
   run: 

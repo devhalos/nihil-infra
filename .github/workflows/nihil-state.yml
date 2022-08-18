@@ -3,7 +3,7 @@ name: 'nihil-state'
 on:
   push:
     paths:
-      - '!./**/*'
+      - '!./**/**'
       - ' ./*'
       - '.husky'
       - '.github/**'

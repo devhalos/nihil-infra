@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/devhalos/nihil-infra/compare/v0.3.0...v0.3.1) (2022-08-18)
+
+
+### Bug Fixes
+
+* test ([#9](https://github.com/devhalos/nihil-infra/issues/9)) ([d718a22](https://github.com/devhalos/nihil-infra/commit/d718a226cda8328cd64c46602973c645fbdbb242))
+
 ## [0.3.0](https://github.com/devhalos/nihil-infra/compare/v0.2.0...v0.3.0) (2022-08-06)
 
 

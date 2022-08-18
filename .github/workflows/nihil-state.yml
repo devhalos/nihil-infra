@@ -3,8 +3,10 @@ name: 'nihil-state'
 on:
   push:
     paths:
-        - '.github/**'
-        - 'nihil-state/**'
+      - '*'
+      - '.github/**'
+      - '.husky/**'
+      - 'nihil-state/**'
 
 defaults:
   run: 

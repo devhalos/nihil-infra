@@ -3,8 +3,11 @@ name: 'cicd-pipeline-role'
 on:
   push:
     paths:
+      - '*'
       - '.github/**'
+      - '.husky/**'
       - 'cicd-pipeline-role/**'
+
 
 defaults:
   run: 

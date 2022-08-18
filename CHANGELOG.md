@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/devhalos/nihil-infra/compare/v0.2.0...v0.3.0) (2022-08-06)
+
+
+### Features
+
+* add deployment env development ([cdcd8ea](https://github.com/devhalos/nihil-infra/commit/cdcd8ea20277cd0117808ba5a484a0876fee62bf))
+* test release ([ba27356](https://github.com/devhalos/nihil-infra/commit/ba273567c3dccf7cda465010b4d0bed8ac725b8d))
+* update release flow ([ba36a74](https://github.com/devhalos/nihil-infra/commit/ba36a749365cdf1c99a192e2f3419a14c66f2188))
+
 ## [0.2.0](https://github.com/devhalos/nihil-remote-backend-state-infra/compare/v0.1.0...v0.2.0) (2022-07-26)
 
 

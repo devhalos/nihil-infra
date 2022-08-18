@@ -3,8 +3,8 @@ name: 'cicd-pipeline-role'
 on:
   push:
     paths:
+      - '**'
       - '!nihil-state/**'
-
 
 defaults:
   run: 

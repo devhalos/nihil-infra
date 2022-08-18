@@ -3,6 +3,7 @@ name: 'nihil-state'
 on:
   push:
     paths:
+      - '**'
       - '!cicd-pipeline-role/**'
 
 defaults:

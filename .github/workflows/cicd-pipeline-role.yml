@@ -2,9 +2,6 @@ name: 'cicd-pipeline-role'
 
 on:
   push:
-    paths:
-      - '.github/**'
-      - 'cicd-pipeline-role/**'
 
 defaults:
   run: 

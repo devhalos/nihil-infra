@@ -1,9 +1,11 @@
 provider "aws" {
   region = "ap-southeast-1"
   default_tags {
-    organization = "devhalos"
-    project      = "nihil"
-    component    = "nihil-state"
+    tags = {
+      organization = "devhalos"
+      project      = "nihil"
+      component    = "nihil-state"
+    }
   }
 }
 

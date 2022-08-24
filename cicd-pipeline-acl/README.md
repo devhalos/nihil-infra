@@ -1,4 +1,4 @@
-# CICD Pipeline
+# CICD Pipeline ACL
 
 This component is use to create the aws role that the ci/cd pipeline can assume in order to deploy the infrastructure via terraform
 

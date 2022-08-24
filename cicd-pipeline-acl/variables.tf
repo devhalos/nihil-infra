@@ -14,5 +14,5 @@ variable "project" {
 
 variable "component" {
   type    = string
-  default = "cicd-pipeline"
+  default = "cicd-pipeline-acl"
 }

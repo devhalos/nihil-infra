@@ -62,7 +62,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: terraform-plan-artifact
-          path: nihil-state/local.tfplan
+          path: remote-backend/local.tfplan
 
 
   deploy-dev:
@@ -101,7 +101,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: terraform-plan-artifact
-          path: nihil-state
+          path: remote-backend
 
       - name: 'tf: apply'
         id: apply

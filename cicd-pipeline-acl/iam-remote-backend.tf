@@ -10,7 +10,8 @@ data "aws_iam_policy_document" "cicd_pipeline_permissions_remote_backend" {
       "dynamodb:DescribeTable",
       "dynamodb:DescribeContinuousBackups",
       "dynamodb:DescribeTimeToLive",
-      "dynamodb:ListTagsOfResource"
+      "dynamodb:ListTagsOfResource",
+      "dynamodb:TagResource"
     ]
     resources = [
       "arn:aws:dynamodb:*:${var.aws_account}:table/*"
@@ -38,7 +39,8 @@ data "aws_iam_policy_document" "cicd_pipeline_permissions_remote_backend" {
       "s3:GetEncryptionConfiguration",
       "s3:GetLifecycleConfiguration",
       "s3:GetReplicationConfiguration",
-      "s3:PutEncryptionConfiguration"
+      "s3:PutEncryptionConfiguration",
+      "s3:PutBucketVersioning"
     ]
     resources = [
       "arn:aws:s3:::*"

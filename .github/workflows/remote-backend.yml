@@ -4,7 +4,8 @@ on:
   push:
     paths:
       - '*'
-      - '.github/**'
+      - '.github/*'
+      - '.github/workflows/remote-backend.yml'
       - '.husky/**'
       - 'remote-backend/**'
 

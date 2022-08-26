@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/devhalos/nihil-infra/compare/remote-backend-v1.0.0...remote-backend-v1.1.0) (2022-08-26)
+
+
+### Features
+
+* add flow for dev deployment and release ([f5a7fb0](https://github.com/devhalos/nihil-infra/commit/f5a7fb04120466458209221ed5a6a755c3b57f7c))
+* test ([638b8ab](https://github.com/devhalos/nihil-infra/commit/638b8ab1042f28082b94d484db75bbfa93cad750))
+* testing ([361f6e7](https://github.com/devhalos/nihil-infra/commit/361f6e7ff49e8f75adbdb4cca16b75e2d4e37b90))
+* testing 1 ([974eda3](https://github.com/devhalos/nihil-infra/commit/974eda3d91bc5bf726121b9d3478bced268bfd8a))
+* testing 2 ([ac9e85d](https://github.com/devhalos/nihil-infra/commit/ac9e85da6c2059d036765debe3e014ab29082232))
+* testing 3 ([06562c5](https://github.com/devhalos/nihil-infra/commit/06562c5530bb2ccf262a443c6bb61b3afd240dbc))
+* testing 4 ([9f6dbb3](https://github.com/devhalos/nihil-infra/commit/9f6dbb3f9058b975002294f63eb20f77ed95e202))
+* testing 5 ([0a7b154](https://github.com/devhalos/nihil-infra/commit/0a7b154da06722cb1f5b79c0e6f539c2a0d26c3c))
+
 ## 1.0.0 (2022-08-26)
 
 

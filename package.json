@@ -1,6 +1,6 @@
 {
   "name": "@devhalos/nihil-infra",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Nihil Common Infrastructure",
   "main": "index.js",
   "scripts": {

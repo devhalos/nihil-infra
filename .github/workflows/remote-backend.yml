@@ -6,13 +6,14 @@ on:
       - '*'
       - '.github/**'
       - '.husky/**'
-      - 'nihil-state/**'
+      - 'remote-backend/**'
 
 defaults:
   run: 
-    working-directory: nihil-state
+    working-directory: remote-backend
 
 jobs:
+
   build:
     name: 'build'
     runs-on: ubuntu-latest
@@ -27,7 +28,7 @@ jobs:
       - name: 'aws: configure'
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: ${{ secrets.CICD_PIPELINE_ROLE }}
+          role-to-assume: ${{ secrets.CICD_PIPELINE_REMOTE_BACKEND_ROLE_ARN }}
           aws-region: ap-southeast-1
 
       - name: 'tf: setup'
@@ -45,6 +46,10 @@ jobs:
         id: validate
         run: terraform validate
 
+      - name: 'tf: workspace dev'
+        id: workspace-dev
+        run: terraform workspace select dev || terraform workspace new dev
+
       - name: 'tf: plan'
         id: plan
         run: terraform plan -out local.tfplan
@@ -57,27 +62,16 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: terraform-plan-artifact
-          path: nihil-state/local.tfplan
-  
-  release-please:
-    name: 'create-release'
-    runs-on: ubuntu-latest
-    permissions: "write-all"
-    steps:
-      - name: 'checkout'
-        uses: actions/checkout@v2
-      - uses: google-github-actions/release-please-action@v3.1.2
-        with:
-          release-type: node
-          package-name: release-please-actions
-          token: ${{ secrets.CICD_PIPELINE_GITHUB_TOKEN }}
+          path: remote-backend/local.tfplan
 
-  deploy:
-    if: contains(github.ref, 'refs/tags/')
-    name: 'deploy'
+
+  deploy-dev:
+    # if: contains(github.ref, 'refs/main')
     needs: build
+
+    name: 'deploy-dev'
     runs-on: ubuntu-latest
-    environment: production
+    environment: dev
     permissions:
       id-token: write
       contents: read
@@ -89,7 +83,7 @@ jobs:
       - name: 'aws: configure'
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: ${{ secrets.CICD_PIPELINE_ROLE }}
+          role-to-assume: ${{ secrets.CICD_PIPELINE_REMOTE_BACKEND_ROLE_ARN }}
           aws-region: ap-southeast-1
 
       - name: 'tf: setup'
@@ -99,19 +93,38 @@ jobs:
         id: init
         run: terraform init     
 
+      - name: 'tf: workspace dev'
+        id: workspace-dev
+        run: terraform workspace select dev || terraform workspace new dev
+
       - name: 'download artifact: terraform plan output'
         uses: actions/download-artifact@v2
         with:
           name: terraform-plan-artifact
-          path: nihil-state
-
-      - name: 'view files'
-        id: view-files
-        run: ls -al
+          path: remote-backend
 
       - name: 'tf: apply'
         id: apply
         run: terraform apply local.tfplan
+  
+
+  create-release:
+    # if: contains(github.ref, 'refs/main')
+    # needs: deploy-dev
+
+    name: 'create-release'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'checkout'
+        uses: actions/checkout@v2
+
+      - uses: google-github-actions/release-please-action@v3.1.2
+        with:
+          token: ${{ secrets.CICD_PIPELINE_GITHUB_TOKEN }}
+          release-type: node
+          package-name: remote-backend
+          monorepo-tags: true
 
 
 

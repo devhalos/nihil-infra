@@ -1,25 +1,17 @@
-resource "aws_iam_openid_connect_provider" "github" {
-  url = "https://token.actions.githubusercontent.com"
-  client_id_list = [
-    "sts.amazonaws.com",
-  ]
-  thumbprint_list = [
-    "6938fd4d98bab03faadb97b34396831e3780aea1"
-  ]
-  tags = local.common_tags
-}
 
-data "aws_iam_policy_document" "cicd_pipeline_permissions" {
+data "aws_iam_policy_document" "cicd_pipeline_permissions_remote_backend" {
   statement {
     sid = "TfStateLocking"
     actions = [
       "dynamodb:GetItem",
       "dynamodb:PutItem",
       "dynamodb:DeleteItem",
+      "dynamodb:CreateTable",
       "dynamodb:DescribeTable",
       "dynamodb:DescribeContinuousBackups",
       "dynamodb:DescribeTimeToLive",
-      "dynamodb:ListTagsOfResource"
+      "dynamodb:ListTagsOfResource",
+      "dynamodb:TagResource"
     ]
     resources = [
       "arn:aws:dynamodb:*:${var.aws_account}:table/*"
@@ -47,7 +39,11 @@ data "aws_iam_policy_document" "cicd_pipeline_permissions" {
       "s3:GetEncryptionConfiguration",
       "s3:GetLifecycleConfiguration",
       "s3:GetReplicationConfiguration",
-      "s3:PutEncryptionConfiguration"
+      "s3:CreateBucket",
+      "s3:PutEncryptionConfiguration",
+      "s3:PutBucketTagging",
+      "s3:PutBucketPublicAccessBlock",
+      "s3:PutBucketVersioning",
     ]
     resources = [
       "arn:aws:s3:::*"
@@ -67,41 +63,12 @@ data "aws_iam_policy_document" "cicd_pipeline_permissions" {
 }
 
 resource "aws_iam_policy" "cicd_pipeline" {
-  name   = "${local.component_name}-policy"
-  policy = data.aws_iam_policy_document.cicd_pipeline_permissions.json
-  tags   = local.common_tags
-}
-
-data "aws_iam_policy_document" "cicd_pipeline_role_trust_relationship" {
-  statement {
-    principals {
-      type = "Federated"
-      identifiers = [
-        resource.aws_iam_openid_connect_provider.github.arn
-      ]
-    }
-    actions = [
-      "sts:AssumeRoleWithWebIdentity"
-    ]
-    condition {
-      test     = "StringEquals"
-      variable = "token.actions.githubusercontent.com:aud"
-      values = [
-        "sts.amazonaws.com"
-      ]
-    }
-    condition {
-      test     = "StringLike"
-      variable = "token.actions.githubusercontent.com:sub"
-      values = [
-        "repo:devhalos/*:*"
-      ]
-    }
-  }
+  name   = "${local.component_name}-remote-backend-policy"
+  policy = data.aws_iam_policy_document.cicd_pipeline_permissions_remote_backend.json
 }
 
 resource "aws_iam_role" "cicd_pipeline" {
-  name = "${local.component_name}-role"
+  name = "${local.component_name}-remote-backend-role"
   managed_policy_arns = [
     aws_iam_policy.cicd_pipeline.arn
   ]

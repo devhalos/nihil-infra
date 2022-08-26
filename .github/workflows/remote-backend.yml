@@ -110,7 +110,7 @@ jobs:
 
   create-release:
     # if: contains(github.ref, 'refs/main')
-    needs: deploy-dev
+    # needs: deploy-dev
 
     name: 'create-release'
     runs-on: ubuntu-latest
@@ -123,8 +123,8 @@ jobs:
         with:
           token: ${{ secrets.CICD_PIPELINE_GITHUB_TOKEN }}
           release-type: node
-          package-name: release-please-actions
-          monorepo-tags: remote-backend
+          package-name: remote-backend
+          monorepo-tags: true
 
 
 

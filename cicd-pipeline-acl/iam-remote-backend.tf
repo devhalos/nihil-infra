@@ -39,8 +39,11 @@ data "aws_iam_policy_document" "cicd_pipeline_permissions_remote_backend" {
       "s3:GetEncryptionConfiguration",
       "s3:GetLifecycleConfiguration",
       "s3:GetReplicationConfiguration",
+      "s3:CreateBucket",
       "s3:PutEncryptionConfiguration",
-      "s3:PutBucketVersioning"
+      "s3:PutBucketTagging",
+      "s3:PutBucketPublicAccessBlock",
+      "s3:PutBucketVersioning",
     ]
     resources = [
       "arn:aws:s3:::*"

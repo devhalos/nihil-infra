@@ -123,7 +123,7 @@ jobs:
       - uses: google-github-actions/release-please-action@v3.1.2
         with:
           token: ${{ secrets.CICD_PIPELINE_GITHUB_TOKEN }}
-          release-type: terraform-module
+          release-type: simple
           package-name: remote-backend
           path: remote-backend
           monorepo-tags: true

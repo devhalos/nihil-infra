@@ -14,3 +14,10 @@ module "jenkins_casc" {
   component = "jenkins-casc-${terraform.workspace}"
 }
 
+module "jenkins_casc_docker_registry" {
+  source    = "github.com/devhalos/nihil-terraform-modules.git//aws_s3_remote_backend?ref=v0.1.0"
+  component = "jenkins-casc-docker-registry-${terraform.workspace}"
+}
+
+
+

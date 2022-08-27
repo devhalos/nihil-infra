@@ -67,7 +67,7 @@ jobs:
 
 
   deploy-dev:
-    if: contains(github.ref, 'refs/heads/main')
+    if: contains(github.ref, 'refs/heads/main') || contains(github.ref, 'refs/tags')
     needs: build
 
     name: 'deploy-dev'

@@ -37,7 +37,7 @@ jobs:
 
       - name: 'tf: format'
         id: fmt
-        run: terraform fmt -check
+        run: terraform fmt -check -recursive
 
       - name: 'tf: init'
         id: init

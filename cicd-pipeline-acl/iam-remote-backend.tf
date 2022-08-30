@@ -11,7 +11,8 @@ data "aws_iam_policy_document" "cicd_pipeline_permissions_remote_backend" {
       "dynamodb:DescribeContinuousBackups",
       "dynamodb:DescribeTimeToLive",
       "dynamodb:ListTagsOfResource",
-      "dynamodb:TagResource"
+      "dynamodb:TagResource",
+      "dynamodb:DeleteTable"
     ]
     resources = [
       "arn:aws:dynamodb:*:${var.aws_account}:table/*"

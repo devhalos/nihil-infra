@@ -47,10 +47,6 @@ jobs:
         id: validate
         run: terraform validate
 
-      - name: 'tf: workspace dev'
-        id: workspace-dev
-        run: terraform workspace select dev || terraform workspace new dev
-
       - name: 'tf: plan'
         id: plan
         run: terraform plan -out local.tfplan
@@ -66,13 +62,12 @@ jobs:
           path: remote-backend/local.tfplan
 
 
-  deploy-dev:
+  deploy:
     if: contains(github.ref, 'refs/heads/main') || contains(github.ref, 'refs/tags')
     needs: build
 
-    name: 'deploy-dev'
+    name: 'deploy'
     runs-on: ubuntu-latest
-    environment: dev
     permissions:
       id-token: write
       contents: read
@@ -94,10 +89,6 @@ jobs:
         id: init
         run: terraform init     
 
-      - name: 'tf: workspace dev'
-        id: workspace-dev
-        run: terraform workspace select dev || terraform workspace new dev
-
       - name: 'download artifact: terraform plan output'
         uses: actions/download-artifact@v2
         with:
@@ -111,7 +102,7 @@ jobs:
 
   create-release:
     if: contains(github.ref, 'refs/heads/main')
-    needs: deploy-dev
+    needs: deploy
 
     name: 'create-release'
     runs-on: ubuntu-latest 

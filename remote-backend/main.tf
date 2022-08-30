@@ -4,13 +4,20 @@ provider "aws" {
     tags = {
       organization = "devhalos"
       project      = "nihil"
-      component    = "nihil-state"
+      component    = "remote-backend"
     }
   }
 }
 
 module "jenkins_casc" {
-  source    = "github.com/devhalos/nihil-terraform-modules.git//aws_s3_remote_backend?ref=v0.1.0"
-  component = "jenkins-casc-${terraform.workspace}"
+  source    = "github.com/devhalos/nihil-terraform-modules.git//aws_s3_remote_backend?ref=v0.2.0"
+  component = "${terraform.workspace}-jenkins-casc"
 }
+
+module "jenkins_casc_docker_registry" {
+  source    = "github.com/devhalos/nihil-terraform-modules.git//aws_s3_remote_backend?ref=v0.2.0"
+  component = "${terraform.workspace}-jenkins-casc-docker-registry"
+}
+
+
 

@@ -34,4 +34,44 @@ data "aws_iam_policy_document" "cicd_pipeline_role_trust_relationship" {
       ]
     }
   }
+
+  statement {
+    principals {
+      type = "AWS"
+      identifiers = [
+        "arn:aws:iam::${var.aws_account}:user/nihil-dev"
+      ]
+    }
+
+    actions = [
+      "sts:AssumeRole"
+    ]
+  }
+}
+
+data "aws_iam_policy_document" "cicd_pipeline" {
+  statement {
+    sid = "CICDPipeline"
+    actions = [
+      "dynamodb:*",
+      "s3:*",
+      "ecr:*"
+    ]
+    resources = [
+      "*",
+    ]
+  }
+}
+
+resource "aws_iam_policy" "cicd_pipeline" {
+  name   = local.component_name
+  policy = data.aws_iam_policy_document.cicd_pipeline.json
+}
+
+resource "aws_iam_role" "cicd_pipeline" {
+  name = local.component_name
+  managed_policy_arns = [
+    aws_iam_policy.cicd_pipeline.arn
+  ]
+  assume_role_policy = data.aws_iam_policy_document.cicd_pipeline_role_trust_relationship.json
 }

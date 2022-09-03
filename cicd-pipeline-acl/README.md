@@ -1,7 +1,10 @@
 # CICD Pipeline ACL
 
-This component is use to create the aws role that the ci/cd pipeline can assume in order to deploy the infrastructure via terraform
+This component is use to create the aws role that the ci/cd pipeline can assume in order to deploy the infrastructure
 
+## Development
+
+Create an entry file in the form of `iam-<component>.tf` for each component that needs aws role to assume for deploying infrastructure
 
 ## Deployment
 

@@ -14,9 +14,9 @@ module "jenkins_casc" {
   component = "${var.component}-jenkins-casc"
 }
 
-module "jenkins_casc_docker_registry" {
+module "jenkins_casc_image" {
   source    = "github.com/devhalos/nihil-terraform-modules.git//aws_s3_remote_backend?ref=v0.2.0"
-  component = "${var.component}-jenkins-casc-docker-registry"
+  component = "${var.component}-jenkins-casc-image"
 }
 
 

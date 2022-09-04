@@ -1,13 +1,6 @@
 name: remote-backend
 
-on:
-  push:
-    paths:
-      - '*'
-      - '.github/*'
-      - '.github/workflows/remote-backend.yml'
-      - '.husky/**'
-      - 'remote-backend/**'
+on: push
 
 defaults:
   run: 

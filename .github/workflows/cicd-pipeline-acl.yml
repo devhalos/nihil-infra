@@ -1,13 +1,6 @@
 name: cicd-pipeline-acl
 
-on:
-  push:
-    paths:
-      - '*'
-      - '.github/*'
-      - '.github/workflows/cicd-pipeline-acl.yml'
-      - '.husky/**'
-      - 'cicd-pipeline-acl/**'
+on: push
 
 
 defaults:

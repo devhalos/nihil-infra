@@ -19,5 +19,9 @@ module "jenkins_casc_image" {
   component = "${var.component}-jenkins-casc-image"
 }
 
+module "piso_wifi" {
+  source    = "github.com/devhalos/nihil-terraform-modules.git//aws_s3_remote_backend?ref=v0.2.0"
+  component = "${var.component}-piso-wifi"
+}
 
 

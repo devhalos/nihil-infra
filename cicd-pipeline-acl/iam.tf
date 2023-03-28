@@ -55,7 +55,17 @@ data "aws_iam_policy_document" "cicd_pipeline" {
     actions = [
       "dynamodb:*",
       "s3:*",
-      "ecr:*"
+      "ecr:*",
+      "ec2:*",
+      "elasticloadbalancing:*",
+      "elasticfilesystem:*",
+      "servicediscovery:*",
+      "route53:*",
+      "logs:*",
+      "iam:*",
+      "ecs:*",
+      "acm:*",
+      "kms:*"
     ]
     resources = [
       "*",

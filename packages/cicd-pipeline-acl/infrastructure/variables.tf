@@ -1,7 +1,3 @@
-variable "aws_account" {
-  type = string
-}
-
 variable "organization" {
   type    = string
   default = "devhalos"

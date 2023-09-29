@@ -10,9 +10,10 @@ Create an entry file in the form of `iam-<component>.tf` for each component that
 
 The infrastructure for the role and permissions are deployed using terraform.
 
-The terraform deployment is done manually e.g via terraform cli
+The terraform deployment is done manually via terraform cli
 
 ```sh
+cd infrastructure
 terraform init
 terraform plan -out local.tfplan
 terraform apply local.tfplan

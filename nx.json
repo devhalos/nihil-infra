@@ -8,6 +8,7 @@
         "cacheableOperations": [
           "build",
           "lint",
+          "lint:type",
           "test",
           "test:unit",
           "test:component",
@@ -21,6 +22,7 @@
     "build": {
       "dependsOn": ["^build"]
     },
+    "lint:type": {},
     "test:unit": {},
     "test:component": {},
     "infra:lint": {},

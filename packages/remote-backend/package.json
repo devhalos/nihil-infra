@@ -1,0 +1,24 @@
+{
+  "name": "remote-backend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Component that handles the creation of remote backends for nihil projects infra",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "infra:init": "cd infrastructure && terraform init",
+    "infra:lint": "sh ../../scripts/lint-infrastructure.sh",
+    "infra:diff": "cd infrastructure && terraform plan -out=local.tfplan",
+    "infra:deploy": "cd infrastructure && terraform apply local.tfplan"
+  },
+  "keywords": [
+    "nihil",
+    "infrastructure",
+    "aws",
+    "terraform",
+    "infrastructure"
+  ],
+  "author": "Jayson Ojeda",
+  "license": "MIT"
+}

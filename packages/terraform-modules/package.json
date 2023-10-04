@@ -1,0 +1,22 @@
+{
+  "name": "terraform-modules",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Collection of reusable terraform modules",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "infra:lint": "sh scripts/lint-modules.sh",
+    "infra:deploy": "echo 'No deployment specified'"
+  },
+  "keywords": [
+    "nihil",
+    "infrastructure",
+    "aws",
+    "terraform",
+    "modules"
+  ],
+  "author": "Jayson Ojeda",
+  "license": "MIT"
+}

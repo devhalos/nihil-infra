@@ -13,8 +13,5 @@ The infrastructure for the role and permissions are deployed using terraform.
 The terraform deployment is done manually via terraform cli
 
 ```sh
-cd infrastructure
-terraform init
-terraform plan -out local.tfplan
-terraform apply local.tfplan
+npm run infra:deploy:local
 ```

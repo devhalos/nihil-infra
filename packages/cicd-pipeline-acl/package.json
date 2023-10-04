@@ -3,24 +3,24 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "component that creates the aws role that cicd pipeline can assume to deploy aws resources",
+  "description": "Component that creates the aws role that cicd pipeline can assume to deploy aws resources",
   "main": "index.js",
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"No test specified\"",
-    "tf:init": "cd infrastructure && terraform init",
-    "tf:plan": "cd infrastructure && terraform plan -var-file=local.tfvars -out local.tfplan",
-    "tf:apply": "cd infrastructure && terraform apply local.tfplan",
-    "infra:deploy": "echo \"This component is deployed manually\"",
+    "infra:init": "cd infrastructure && terraform init",
+    "infra:lint": "sh ../../scripts/lint-infrastructure.sh",
+    "infra:diff": "cd infrastructure && terraform plan -out=local.tfplan",
+    "infra:deploy": "echo 'This command is reserve for deployment using pipeline. This component is deployed manually'",
     "infra:deploy:local": "npm run tf:plan && npm run tf:apply"
   },
   "keywords": [
     "nihil",
     "infrastructure",
-    "github actions",
-    "cicd",
-    "aws"
+    "aws",
+    "terraform",
+    "github-actions",
+    "cicd"
   ],
-  "author": "jayson ojeda",
+  "author": "Jayson Ojeda",
   "license": "MIT"
 }

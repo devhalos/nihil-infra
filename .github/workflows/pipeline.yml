@@ -95,7 +95,9 @@ jobs:
 
   infra-deploy:
     runs-on: ubuntu-latest
-    needs: infra-diff
+    needs: 
+      - infra-lint
+      - infra-diff
     environment: dev
     permissions:
       id-token: write

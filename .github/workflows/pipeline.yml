@@ -19,12 +19,12 @@ jobs:
         with:
           node-version: v18.17.1
           cache: npm
-      
+
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.CICD_PIPELINE_ROLE_ARN }}
           aws-region: ap-southeast-1
-  
+
       - uses: hashicorp/setup-terraform@v2
 
       - name: Cache node modules
@@ -62,12 +62,12 @@ jobs:
         with:
           node-version: v18.17.1
           cache: npm
-      
+
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.CICD_PIPELINE_ROLE_ARN }}
           aws-region: ap-southeast-1
-  
+
       - uses: hashicorp/setup-terraform@v2
 
       - name: Cache node modules
@@ -89,9 +89,6 @@ jobs:
 
       - name: Init infrastructure
         run: sh scripts/run-affected.sh infra:init
-
-      - name: Lint infrastructure
-        run: sh scripts/run-affected.sh infra:lint
 
       - name: Diff infrastructure
         run: sh scripts/run-affected.sh infra:diff

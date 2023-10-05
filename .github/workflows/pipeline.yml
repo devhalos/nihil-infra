@@ -46,9 +46,5 @@ jobs:
       - name: 'tf: setup'
         uses: hashicorp/setup-terraform@v2
 
-      - name: Init Infrastructure
-        id: init
-        run: sh scripts/run-affected.sh infra:init
-
       - name: Lint infrastructure
         run: sh scripts/run-affected.sh infra:lint

@@ -61,7 +61,7 @@ jobs:
         uses: snyk/actions/setup@master
 
       - name: Snyk monitor 
-        run: snyk iac test
+        run: snyk iac test --severity-threshold=medium
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 

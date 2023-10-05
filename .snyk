@@ -1,0 +1,4 @@
+# ignore:
+#   SNYK-CC-AWS-417:
+#     - 'packages/terraform-modules/modules/aws_s3_remote_backend/s3.tf > *':
+#       reason: no use case for encryption using customer managed key

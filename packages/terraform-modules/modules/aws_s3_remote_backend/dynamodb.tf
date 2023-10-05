@@ -4,6 +4,10 @@ resource "aws_dynamodb_table" "state_locking" {
   billing_mode = "PAY_PER_REQUEST"
   tags         = var.tags
 
+  point_in_time_recovery {
+    enabled = true
+  }
+
   attribute {
     name = "LockID"
     type = "S"

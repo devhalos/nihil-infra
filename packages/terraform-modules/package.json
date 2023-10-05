@@ -8,7 +8,9 @@
   "devDependencies": {},
   "scripts": {
     "infra:lint": "sh scripts/lint-modules.sh",
-    "infra:deploy": "echo 'No deployment specified'"
+    "infra:init": "echo 'No infra init command specified'",
+    "infra:diff": "echo 'No infra diff command specified'",
+    "infra:deploy": "echo 'No infra deploy specified'"
   },
   "keywords": [
     "nihil",

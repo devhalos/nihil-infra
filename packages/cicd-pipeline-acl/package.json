@@ -9,9 +9,10 @@
   "scripts": {
     "infra:init": "cd infrastructure && terraform init",
     "infra:lint": "sh ../../scripts/lint-infrastructure.sh",
-    "infra:diff": "cd infrastructure && terraform plan -out=local.tfplan",
+    "infra:diff": "echo 'This command is reserve for deployment using pipeline. This component is deployed manually'",
     "infra:deploy": "echo 'This command is reserve for deployment using pipeline. This component is deployed manually'",
-    "infra:deploy:local": "npm run tf:plan && npm run tf:apply"
+    "infra:diff:local": "cd infrastructure && terraform plan -out=local.tfplan",
+    "infra:deploy:local": "cd infrastructure && terraform apply local.tfplan"
   },
   "keywords": [
     "nihil",

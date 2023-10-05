@@ -47,10 +47,29 @@ jobs:
       - name: Lint infrastructure
         run: sh scripts/run-affected.sh infra:lint
 
+  infra-scan:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: 'checkout'
+        uses: actions/checkout@v3
+
+      - name: 'snyk: setup'
+        uses: snyk/actions/setup@master
+
+      - name: Snyk monitor 
+        run: snyk iac test
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
   infra-diff:
     runs-on: ubuntu-latest
     needs:
       - infra-lint
+      - infra-scan
     permissions:
       id-token: write
       contents: read
@@ -97,7 +116,7 @@ jobs:
 
   infra-deploy:
     runs-on: ubuntu-latest
-    needs: 
+    needs:
       - infra-diff
     environment: dev
     permissions:

@@ -6,9 +6,6 @@ on:
 jobs:
   infra-lint:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
 
     steps:
       - uses: actions/checkout@v4
@@ -49,10 +46,7 @@ jobs:
 
   infra-scan:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
-
+    
     steps:
       - uses: actions/checkout@v4
         with:
@@ -73,7 +67,6 @@ jobs:
       - infra-scan
     permissions:
       id-token: write
-      contents: read
 
     steps:
       - uses: actions/checkout@v4
@@ -122,8 +115,7 @@ jobs:
     environment: dev
     permissions:
       id-token: write
-      contents: read
-
+      
     steps:
       - uses: actions/checkout@v4
         with:
@@ -172,8 +164,8 @@ jobs:
     needs: infra-deploy
     runs-on: ubuntu-latest 
     permissions:
-      id-token: write
-      contents: read
+      contents: write
+      pull-requests: write
 
     steps:
       - uses: actions/checkout@v4
@@ -182,5 +174,4 @@ jobs:
 
       - uses: google-github-actions/release-please-action@v3
         with:
-          token: ${{ secrets.CICD_PIPELINE_GITHUB_TOKEN }}
           release-type: node

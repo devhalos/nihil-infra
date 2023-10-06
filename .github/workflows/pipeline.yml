@@ -1,0 +1,172 @@
+name: nihil-infra
+
+on:
+  push:
+
+jobs:
+  infra-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: v18.17.1
+          cache: npm
+
+      - uses: hashicorp/setup-terraform@v2
+
+      - name: Cache node modules
+        id: cache-nodemodules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install dependencies
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Lint infrastructure
+        run: sh scripts/run-affected.sh infra:lint
+
+  infra-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: 'snyk: setup'
+        uses: snyk/actions/setup@master
+
+      - name: Snyk monitor 
+        run: snyk iac test --severity-threshold=medium
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  infra-diff:
+    runs-on: ubuntu-latest
+    needs:
+      - infra-lint
+      - infra-scan
+    permissions:
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: v18.17.1
+          cache: npm
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.CICD_PIPELINE_ROLE_ARN }}
+          aws-region: ap-southeast-1
+
+      - uses: hashicorp/setup-terraform@v2
+
+      - name: Cache node modules
+        id: cache-nodemodules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install dependencies
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Init infrastructure
+        run: sh scripts/run-affected.sh infra:init
+
+      - name: Diff infrastructure
+        run: sh scripts/run-affected.sh infra:diff
+
+  infra-deploy:
+    runs-on: ubuntu-latest
+    needs:
+      - infra-diff
+    environment: dev
+    permissions:
+      id-token: write
+      
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: v18.17.1
+          cache: npm
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.CICD_PIPELINE_ROLE_ARN }}
+          aws-region: ap-southeast-1
+
+      - uses: hashicorp/setup-terraform@v2
+
+      - name: Cache node modules
+        id: cache-nodemodules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install dependencies
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Init infrastructure
+        run: sh scripts/run-affected.sh infra:init
+
+      - name: Diff infrastructure
+        run: sh scripts/run-affected.sh infra:diff
+
+      - name: Deploy infrastructure
+        run: sh scripts/run-affected.sh infra:deploy
+
+  create-release:
+    if: contains(github.ref, 'refs/heads/main')
+    needs: infra-deploy
+    runs-on: ubuntu-latest 
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          release-type: node

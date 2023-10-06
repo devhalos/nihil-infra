@@ -1,0 +1,28 @@
+{
+  "name": "cicd-pipeline-acl",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Component that creates the aws role that cicd pipeline can assume to deploy aws resources",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "infra:lint": "sh ../../scripts/lint-infrastructure.sh",
+    "infra:init": "echo 'This command is reserve for deployment using pipeline. This component is deployed manually'",
+    "infra:diff": "echo 'This command is reserve for deployment using pipeline. This component is deployed manually'",
+    "infra:deploy": "echo 'This command is reserve for deployment using pipeline. This component is deployed manually'",
+    "infra:init:local": "cd infrastructure && terraform init",
+    "infra:diff:local": "cd infrastructure && terraform plan -out=local.tfplan",
+    "infra:deploy:local": "cd infrastructure && terraform apply local.tfplan"
+  },
+  "keywords": [
+    "nihil",
+    "infrastructure",
+    "aws",
+    "terraform",
+    "github-actions",
+    "cicd"
+  ],
+  "author": "Jayson Ojeda",
+  "license": "MIT"
+}

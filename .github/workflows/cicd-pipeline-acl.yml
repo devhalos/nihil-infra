@@ -2,9 +2,8 @@ name: cicd-pipeline-acl
 
 on: push
 
-
 defaults:
-  run: 
+  run:
     working-directory: cicd-pipeline-acl
 
 jobs:
@@ -39,9 +38,3 @@ jobs:
       - name: 'tf: validate'
         id: validate
         run: terraform validate
-
-
-
-
-
-  

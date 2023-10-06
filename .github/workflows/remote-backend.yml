@@ -3,11 +3,10 @@ name: remote-backend
 on: push
 
 defaults:
-  run: 
+  run:
     working-directory: remote-backend
 
 jobs:
-
   build:
     name: 'build'
     runs-on: ubuntu-latest
@@ -54,7 +53,6 @@ jobs:
           name: terraform-plan-artifact
           path: remote-backend/local.tfplan
 
-
   deploy:
     if: contains(github.ref, 'refs/heads/main') || contains(github.ref, 'refs/tags')
     needs: build
@@ -80,7 +78,7 @@ jobs:
 
       - name: 'tf: init'
         id: init
-        run: terraform init     
+        run: terraform init
 
       - name: 'download artifact: terraform plan output'
         uses: actions/download-artifact@v2
@@ -91,14 +89,13 @@ jobs:
       - name: 'tf: apply'
         id: apply
         run: terraform apply local.tfplan
-  
 
   create-release:
     if: contains(github.ref, 'refs/heads/main')
     needs: deploy
 
     name: 'create-release'
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
 
     steps:
       - name: 'checkout'
@@ -111,10 +108,3 @@ jobs:
           package-name: remote-backend
           path: remote-backend
           monorepo-tags: true
-
-
-
-
-
-
-  

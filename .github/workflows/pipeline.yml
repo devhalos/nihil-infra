@@ -17,11 +17,6 @@ jobs:
           node-version: v18.17.1
           cache: npm
 
-      - uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ secrets.CICD_PIPELINE_ROLE_ARN }}
-          aws-region: ap-southeast-1
-
       - uses: hashicorp/setup-terraform@v2
 
       - name: Cache node modules

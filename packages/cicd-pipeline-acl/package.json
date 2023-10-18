@@ -9,6 +9,7 @@
   "scripts": {
     "infra:lint": "sh ../../scripts/lint-infrastructure.sh",
     "infra:init": "echo 'This command is reserve for deployment using pipeline. This component is deployed manually'",
+    "infra:test": "echo 'This command is reserve for deployment using pipeline. This component is deployed manually'",
     "infra:diff": "echo 'This command is reserve for deployment using pipeline. This component is deployed manually'",
     "infra:deploy": "echo 'This command is reserve for deployment using pipeline. This component is deployed manually'",
     "infra:init:local": "cd infrastructure && terraform init",

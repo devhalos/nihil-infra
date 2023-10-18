@@ -41,7 +41,7 @@ jobs:
 
   infra-scan:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -50,7 +50,7 @@ jobs:
       - name: 'snyk: setup'
         uses: snyk/actions/setup@master
 
-      - name: Snyk monitor 
+      - name: Snyk monitor
         run: snyk iac test --severity-threshold=medium
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
@@ -97,9 +97,6 @@ jobs:
         if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: npm ci
 
-      - name: Init infrastructure
-        run: sh scripts/run-affected.sh infra:init
-
       - name: Diff infrastructure
         run: sh scripts/run-affected.sh infra:diff
 
@@ -110,7 +107,7 @@ jobs:
     environment: dev
     permissions:
       id-token: write
-      
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -145,19 +142,13 @@ jobs:
         if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: npm ci
 
-      - name: Init infrastructure
-        run: sh scripts/run-affected.sh infra:init
-
-      - name: Diff infrastructure
-        run: sh scripts/run-affected.sh infra:diff
-
       - name: Deploy infrastructure
         run: sh scripts/run-affected.sh infra:deploy
 
   create-release:
     if: contains(github.ref, 'refs/heads/main')
     needs: infra-deploy
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       pull-requests: write

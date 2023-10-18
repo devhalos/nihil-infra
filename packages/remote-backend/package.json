@@ -8,6 +8,7 @@
   "scripts": {
     "infra:init": "cd infrastructure && terraform init",
     "infra:lint": "sh ../../scripts/lint-infrastructure.sh",
+    "infra:test": "cd infrastructure && terraform test --test-directory=tests",
     "infra:diff": "cd infrastructure && terraform plan -out=local.tfplan",
     "infra:deploy": "cd infrastructure && terraform apply local.tfplan"
   },
@@ -18,6 +19,6 @@
     "terraform",
     "infrastructure"
   ],
-  "author": "Jayson Ojeda",
+  "author": "Jayson",
   "license": "MIT"
 }

@@ -13,7 +13,7 @@ module "dyene_web_app" {
   source       = "../../terraform-modules/modules/aws_s3_remote_backend"
   organization = var.organization
   project      = var.project
-  component    = "dyene-web-app"
+  component    = "dyene"
 }
 
 

@@ -4,4 +4,4 @@
 sh ./scripts/check-branch-updated.sh
 sh ./scripts/check-branch-name-format.sh
 
-npx nx affected -t build test:unit test:component
+npx nx affected -t build test:unit test:component infra:test

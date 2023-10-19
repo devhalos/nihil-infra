@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/devhalos/nihil-infra/compare/v2.0.0...v2.1.0) (2023-10-19)
+
+
+### Features
+
+* nih-24 remote backends for dyene ([#35](https://github.com/devhalos/nihil-infra/issues/35)) ([3974c94](https://github.com/devhalos/nihil-infra/commit/3974c94c4ea41f385d903f1206bc2450a8993141))
+
 ## 2.0.0 (2023-10-06)
 
 

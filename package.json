@@ -1,35 +1,26 @@
 {
   "name": "@devhalos/nihil-infra",
-  "version": "2.0.0",
   "description": "Nihil Common Infrastructure",
-  "main": "index.js",
+  "version": "2.0.0",
+  "author": "Jayson Ojeda",
+  "license": "MIT",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install",
     "commitlint": "commitlint"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/devhalos/nihil-remote-backend-state-infra.git"
   },
   "keywords": [
     "devhalos",
     "nihil",
     "terraform"
   ],
-  "author": "Jayson Ojeda",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/devhalos/nihil-remote-backend-state-infra/issues"
-  },
-  "homepage": "https://github.com/devhalos/nihil-remote-backend-state-infra#readme",
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
-    "@nrwl/nx-cloud": "^16.4.0",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
-    "nx": "^16.9.0",
+    "nx": "16.10.0",
+    "nx-cloud": "latest",
     "prettier": "^3.0.3"
   },
   "workspaces": [

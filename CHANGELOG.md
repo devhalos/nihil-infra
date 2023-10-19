@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/devhalos/nihil-infra/compare/v2.1.0...v2.1.1) (2023-10-19)
+
+
+### Bug Fixes
+
+* nih-24 remove submodule in the remote backend names ([#37](https://github.com/devhalos/nihil-infra/issues/37)) ([c1f0e72](https://github.com/devhalos/nihil-infra/commit/c1f0e721cddbe2ba9c222c39b35f0e8162e414c3))
+
 ## [2.1.0](https://github.com/devhalos/nihil-infra/compare/v2.0.0...v2.1.0) (2023-10-19)
 
 
